@@ -5,7 +5,6 @@ import com.bspc.bar_simulator_fx.threads.BartenderThread2;
 import javafx.scene.Node;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Paint;
-import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
 import lombok.Getter;
 import lombok.Setter;
@@ -39,7 +38,6 @@ public class BartenderController implements Observer {
                 rectangle1.setFill(Paint.valueOf("#ff3838"));
             }else {
                 Node node = pane.getChildren().stream().filter(r -> Objects.equals(r.getId(), bartender2.getFigure().getId())).findAny().orElseThrow(() -> new RuntimeException("Not Found Bartender"));
-//                Node node2 = pane.getChildren().stream().filter(r -> Objects.equals(r.getId(), bartender2.getClient().getChair().getFigure().getId())).findAny().orElseThrow(() -> new RuntimeException("Not Found Chair"));
                 Rectangle rectangle1 = (Rectangle) node;
                 rectangle1.setLayoutX(261);
                 rectangle1.setLayoutY(27);

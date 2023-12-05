@@ -27,7 +27,6 @@ public class BartenderThread2 extends Observable implements Runnable{
     @SneakyThrows
     public void run() {
         log.info(Thread.currentThread().getName() + " THREAD BARTENDER");
-//        Bartender2 bartender2 = monitorBar.getBar().getBartender();
         while (true){
             Bartender2 bartender = monitorBar.startAttendClientByBartender();
             Platform.runLater(()->{

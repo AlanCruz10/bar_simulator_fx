@@ -72,7 +72,6 @@ public class MonitorBar {
         List<Client2> clientsListWait = getBar().getClientsListWait();
         receptionist.setStatus(true);
         Client2 client = clientsListWait.get(0);
-//        client.setStatus(true);
         getBar().setClientsListWait(clientsListWait);
         log.info("RECEPTIONIST "+ receptionist.getId() +" ATTENDED CLIENT " + client.getId());
         this.notifyAll();
@@ -104,7 +103,6 @@ public class MonitorBar {
         });
         getBar().setChairs(chairsList);
         client.setChair(chair);
-//        client.setDrink(true);
         client.setStatus(true);
         clientsListSeated.add(client);
         getBar().setClientsListSeated(clientsListSeated);
@@ -127,37 +125,9 @@ public class MonitorBar {
         bartender.setClient(client2);
         client2.setBartender(bartender);
 
-
         log.info("BARTENDER "+ bartender.getId() +" ATTENDING CLIENT " + clientsListSeated.get(0).getId());
         this.notifyAll();
         return bartender;
-//
-//        List<Bartender2> bartenders = getBar().getBartenderList();
-//        List<Bartender2> bartenderList = bartenders.stream().filter(b -> b.isStatus() && b.getClient() == null).toList();
-//        boolean bartendersAvailable = bartenderList.isEmpty();
-//        List<Client2> clientsListSeated = getBar().getClientsListSeated();
-//        List<Chair2> chairs = getBar().getChairs();
-//
-//        while (clientsListSeated.size() == 0
-//                || chairs.stream().allMatch(Chair2::isStatus)
-//                || bartendersAvailable){
-//            this.wait();
-//        }
-//
-//        Client client = clientsListSeated.get(0);
-//        for (Bartender b : bartenderList) {
-//            if (b.isStatus() && b.getClient() == null){
-//                b.setStatus(false);
-//                b.setClient(client);
-//                client.setBartender(b);
-//                break;
-//            }
-//        }
-//
-//        getBar().setClientsListSeated(clientsListSeated);
-//        getBar().setBartenderList(bartenderList);
-//        log.info("BARTENDER "+ clientsListSeated.get(0).getBartender().getId() +" ATTENDING CLIENT " + clientsListSeated.get(0).getId());
-//        this.notifyAll();
     }
 
     public synchronized Bartender2 endAttendClientByBartender(){
@@ -173,23 +143,6 @@ public class MonitorBar {
         log.info("BARTENDER "+ bartender.getId() +" ATTENDED CLIENT " + client.getId());
         this.notifyAll();
         return bartender;
-
-//        List<Bartender> bartenderList = getBar().getBartenderList().stream().filter(Bartender::isStatus).toList();
-//        List<Client> clientsListSeated = getBar().getClientsListSeated();
-//        for (Bartender b : bartenderList) {
-//            if (!b.isStatus() && b.getClient() != null){
-//                b.setStatus(true);
-//                Client client = clientsListSeated.get(0);
-//                b.setClient(null);
-//                client.setBartender(null);
-//                client.setDrink(true);
-//                getBar().setClientsListSeated(clientsListSeated);
-//                break;
-//            }
-//        }
-//        getBar().setBartenderList(bartenderList);
-//        log.info("BARTENDER "+ clientsListSeated.get(0).getBartender().getId() +" ATTENDED CLIENT " + clientsListSeated.get(0).getId());
-//        this.notifyAll();
     }
 
     @SneakyThrows

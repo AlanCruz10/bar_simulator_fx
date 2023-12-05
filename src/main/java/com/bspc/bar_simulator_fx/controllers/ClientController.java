@@ -35,19 +35,8 @@ public class ClientController implements Observer {
     public void update(Observable o, Object arg) {
         String className = o.getClass().describeConstable().stream().findFirst().orElseThrow(() -> new RuntimeException("Not Found Class")).displayName();
         String instruction = arg.getClass().describeConstable().stream().findFirst().orElseThrow(() -> new RuntimeException("Not Found Instruction")).displayName();
-//        log.info(className + instruction);
         switch (className){
             case "ClientGenerateThread2" -> {
-//                switch (instruction){
-//                    case "Client2"->{
-//                        Client2 client = (Client2) arg;
-//                        pane.getChildren().add(client.getFigure());
-//                    }
-//                    default -> {
-//                        log.info("Default");
-//                    }
-//                }
-
                 switch (instruction){
                     case "Client2"->{
                         Client2 client = (Client2) arg;
@@ -63,11 +52,6 @@ public class ClientController implements Observer {
                             rectangle.setFill(Paint.valueOf("#ff3838"));
                         }else if(client.getId() > 0) {
                             pane.getChildren().add(client.getFigure());
-//                            circle.setLayoutX(109);
-//                            circle.setLayoutY(252);
-//                            circle.setId(client.getFigure().getId());
-//                            rectangle.setId(client.getChair().getFigure().getId());
-//                            rectangle.setFill(Paint.valueOf("#079073"));
                         }else {
                             Node node = pane.getChildren().stream().filter(r -> Objects.equals(r.getId(), client.getFigure().getId())).findAny().orElseThrow(() -> new RuntimeException("Not Found Client"));
                             Node node2 = pane.getChildren().stream().filter(r -> Objects.equals(r.getId(), client.getChair().getFigure().getId())).findAny().orElseThrow(() -> new RuntimeException("Not Found Client"));
@@ -103,16 +87,12 @@ public class ClientController implements Observer {
                             rectangle1.setFill(Paint.valueOf("#ff3838"));
                         }else {
                             Node node = pane.getChildren().stream().filter(r -> Objects.equals(r.getId(), bartender2.getFigure().getId())).findAny().orElseThrow(() -> new RuntimeException("Not Found Bartender"));
-//                Node node2 = pane.getChildren().stream().filter(r -> Objects.equals(r.getId(), bartender2.getClient().getChair().getFigure().getId())).findAny().orElseThrow(() -> new RuntimeException("Not Found Chair"));
                             Rectangle rectangle1 = (Rectangle) node;
                             rectangle1.setLayoutX(261);
                             rectangle1.setLayoutY(27);
                             rectangle1.setId(bartender2.getFigure().getId());
                             rectangle1.setFill(Paint.valueOf("#f295ff"));
                         }
-                    }
-                    default -> {
-//                        log.info("Default");
                     }
                 }
 
@@ -133,11 +113,6 @@ public class ClientController implements Observer {
                             rectangle.setFill(Paint.valueOf("#ff3838"));
                         }else if(client.getId() > 0) {
                             pane.getChildren().add(client.getFigure());
-//                            circle.setLayoutX(109);
-//                            circle.setLayoutY(252);
-//                            circle.setId(client.getFigure().getId());
-//                            rectangle.setId(client.getChair().getFigure().getId());
-//                            rectangle.setFill(Paint.valueOf("#079073"));
                         }else {
                             circle.setLayoutX(109);
                             circle.setLayoutY(252);
@@ -155,9 +130,6 @@ public class ClientController implements Observer {
                         }else {
                             rectangle.setFill(Paint.valueOf("#ff3838"));
                         }
-                    }
-                    default -> {
-//                        log.info("Default");
                     }
                 }
             }
@@ -177,9 +149,6 @@ public class ClientController implements Observer {
 //                        log.info("Default");
                     }
                 }
-            }
-            default -> {
-//                log.info("Default");
             }
         }
 
