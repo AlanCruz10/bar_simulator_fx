@@ -9,6 +9,7 @@ import lombok.Setter;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 @Getter @Setter
 public class Bar2 {
@@ -147,6 +148,12 @@ public class Bar2 {
         for (Bartender2 b : getBartenderList()){
             getPane().getChildren().add(b.getFigure());
         }
+    }
+
+    public String getColorRandom() {
+        Random random = new Random();
+        String[] colors = new String[]{"#ecbe13", "#66ffff", "#7ab317", "#a013ff", "#57beea", "#2d1b33"};
+        return colors[random.nextInt(colors.length)];
     }
 
 }

@@ -37,7 +37,8 @@ public class MonitorBar {
         client.setLeave(false);
         int idClient = getId();
         client.setId(idClient);
-        client.setFigure(getBar().createFigureCircle(getPositionX(), getPositionY(), 8, "#ebff1e", String.valueOf(idClient)));
+        // color base of client "#ebff1e"
+        client.setFigure(getBar().createFigureCircle(getPositionX(), getPositionY(), 8, getBar().getColorRandom(), String.valueOf(idClient)));
         getBar().getClientsListWait().add(client);
         idClient++;
         setId(idClient);
